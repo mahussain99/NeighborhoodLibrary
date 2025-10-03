@@ -7,13 +7,15 @@ public class neighborhoodLibrary {
     // Initialize an array of book objects with a maximum size of 20.
     private static Book[] Book = new Book[20];
     // The number of book currently stored in the vehicles array.
-    private static int numOfBook = 20;
+    private static int numOfBook = 4;
 
     public static void main(String[] args) {
         // Create and initialize some book objects and store them in the book array.
         Book[0] = new Book(1, "139-78-0132350884", "A Handbook of Agile Software Craftsmanship", false, ""  );
-        Book[1] = new Book(2, "13-978-0135957059", "The Pragmatic Programmer: Your Journey to Mastery ");
-        Book[2] = new Book(3, "13: 978-0201616224", "The Pragmatic Programmer: ");
+        Book[1] = new Book(2, "13-978-0135957059", "The Pragmatic Programmer: Your Journey to Mastery ", true, "");
+        Book[2] = new Book(3, "13: 978-0201616224", "The Pragmatic Programmer: ", true, "");
+        Book[3] = new Book(3, "13: 978-0201616224", "The Pragmatic Programmer: ", false, "");
+        
         // Create a Scanner object to read user input.
         Scanner scanner = new Scanner(System.in);
 
@@ -34,7 +36,7 @@ public class neighborhoodLibrary {
 
             switch (comment) {
                 case 1:
-                    listOfBooks();
+                    listOfBooks(scanner);
                     break;
                 case 2:
                     break;
@@ -49,11 +51,28 @@ public class neighborhoodLibrary {
         }
 
     }
-    public static void listOfBooks() {
-        System.out.println(" We have books in the list");
+    public static void listOfBooks(Scanner scanner) {
+        System.out.println("We have books in the list");
         for (int i = 0; i < numOfBook; i++) {
+            System.out.println(Book[i]);
 
         }
-
     }
-}
+    public static  void available_Books(Scanner scanner){
+        System.out.println("Enter book name or title");
+        String title = scanner.nextLine();
+
+        boolean found = false;
+        for (int i = 0; i < numOfBook; i++) {
+            if (Book[i].getTitle().equalsIgnoreCase(title));
+            System.out.println(Book[i]);
+            found = true;
+
+            if (! found)
+                System.out.println("Book not available");
+            
+        }
+            
+        }
+    }
+
