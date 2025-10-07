@@ -21,6 +21,7 @@ public class Book {
 
     public int getId() {
         return id;
+
     }
 
     public void setId(int id) {
@@ -44,7 +45,7 @@ public class Book {
     }
 
     public boolean isCheckedOut() {
-        return isCheckedOut;
+        return this.isCheckedOut;
     }
 
     public void setCheckedOut(boolean checkedOut) {
@@ -59,6 +60,17 @@ public class Book {
         this.checkedOutTo = checkedOutTo;
     }
 
+    public void checkOut(String name) {
+        isCheckedOut = true;
+        checkedOutTo = name;
+    }
+
+    public void checkIn() {
+        isCheckedOut = false;
+        checkedOutTo = "";
+    }
+
+
     @Override
     public String toString() {
         return "Book{" +
@@ -69,5 +81,7 @@ public class Book {
                 ", checkedOutTo='" + checkedOutTo + '\'' +
                 '}';
     }
+
+
 }
 
